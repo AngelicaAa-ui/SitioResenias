@@ -1,11 +1,12 @@
 <?php
-    require_once 'configuracion.php';
+    require_once 'configuracion.php'; //Inclusion de los parametros globales, permite que la llamada a configuracion 
+    //se realice solo una vez.
 
     if($_SERVER["REQUEST_METHOD"]=="POST"){
         $secret= "6LewNA4sAAAAAIDeVkg1ik5ZSN1YvxcSiy9Koxsa";
         $captcha= $_POST['g-recaptcha-response'];
 
-        if(!$captcha){
+        if(!$captcha){ //Captcha v2, verifica que el ingreso sea seguro por medio de un rompecabezas.
             echo "<p style='color:red;'>Por favor verifica el Captcha...</p>";
             exit;
         }
@@ -36,7 +37,7 @@
         if(!isset($_POST['nombre'], $_POST['apellido'], $_POST['correo'], $_POST['contrasena'])){
             echo "<p style='color:red;'>Faltan datos...</p>";
             exit;
-        }
+        } //Verificar que todos los campos han sido llenados antes de procesarlos para evitar incompletos.
 
         $nombre= $_POST['nombre'];
         $apellido= $_POST['apellido'];
@@ -50,7 +51,7 @@
             exit;
         }
 
-        $hash= password_hash($contrasena, PASSWORD_DEFAULT);
+        $hash= password_hash($contrasena, PASSWORD_DEFAULT); //Almacenar contraseña encriptada.
 
         $verificar= $conexion->prepare("SELECT id FROM usuarios WHERE correo =?");
         $verificar->bind_param("s",$correo);
@@ -67,7 +68,6 @@
             } else {
                 echo "<p style='color:red;'>Error al registrar...</p>";
             }
-
             $verificar->close();
             $conexion->close();
         }

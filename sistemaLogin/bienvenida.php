@@ -4,7 +4,7 @@
     if(!isset($_SESSION['usuario_id'])){
         header("Location: login.php?error=acceso_no_autorizado");
         exit;
-    }
+    } //Inclusion de condiciones en caso de acceso no autorizado.
 ?>
 <!DOCTYPE html>
 <html lang="es">
