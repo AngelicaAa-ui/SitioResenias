@@ -1,12 +1,11 @@
 <?php
-session_start();
-
-if (!isset($_SESSION['usuario_id'])) {
-    header("Location: login.php");
-    exit;
-}
+    require_once 'sistemaLogin/configuracion.php';
+    
+    if(!isset($_SESSION['usuario_id'])){
+        header("Location: login.php?error=acceso_no_autorizado");
+        exit;
+    }
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -22,14 +21,13 @@ if (!isset($_SESSION['usuario_id'])) {
     <title>Reseñas Variadas</title>
 </head>
 <body>
-    <h2>Bienvenido, <?php echo htmlspecialchars($_SESSION['usuario_nombre']); ?> </h2>
-    <a href="cerrar_sesion.php">Cerrar sesión</a>
     <header>
         <img src="imagenes/logo_paginaprincipal.png" alt="Logo del Sitio:Reseñas Variadas">
         <div>
             <h1>Reseñas Variadas</h1>  
             <p class="p">Sean Bienvenidos a Nuestra Web</p>  
-        </div>          
+        </div>  
+        
     </header>
 
     <div class="textoM"><p>¿QUÉ DESEAS VER?</p></div>
@@ -37,23 +35,23 @@ if (!isset($_SESSION['usuario_id'])) {
     <nav>
         <div class="menu">
             <img src="imagenes/logo_paginaprincipal.png" alt="imagen1">
-            <a href="index.html">Inicio</a>
+            <a href="paginaInicio.php">Inicio</a>
         </div>
         <div class="menu">
             <img src="imagenes/logo_paginalibros.png" alt="imagen2">
-            <a href="paginas/libros.html">Libros</a>
+            <a href="paginas/libros.php">Libros</a>
         </div>
         <div class="menu">
             <img src="imagenes/logo_paginapeliculas.png" alt="imagen3">
-            <a href="paginas/peliculas.html">Películas</a>
+            <a href="paginas/peliculas.php">Películas</a>
         </div>
         <div class="menu">
             <img src="imagenes/logo_paginavideojuegos.png" alt="imagen4">
-            <a href="paginas/videojuegos.html">Videojuegos</a>
+            <a href="paginas/videojuegos.php">Videojuegos</a>
         </div>
         <div class="menu">
             <img src="imagenes/logo_paginacontactos.png" alt="imagen5">
-            <a href="contactos.html">Contactos</a>
+            <a href="contactos.php">Contactos</a>
         </div>
     </nav>  
 

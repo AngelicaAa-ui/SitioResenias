@@ -1,3 +1,11 @@
+<?php
+    require_once '../sistemaLogin/configuracion.php';
+
+    if(!isset($_SESSION['usuario_id'])){
+        header("Location: login.php?error=acceso_no_autorizado");
+        exit;
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -24,23 +32,23 @@
     <nav>
         <div class="menu">
             <img src="../imagenes/logo_paginaprincipal.png" alt="imagen1">
-            <a href="../index.html">Inicio</a>
+            <a href="../paginaInicio.php">Inicio</a>
         </div>
         <div class="menu">
             <img src="../imagenes/logo_paginalibros.png" alt="imagen2">
-            <a href="libros.html">Libros</a>    
+            <a href="libros.php">Libros</a>    
         </div>
         <div class="menu">
             <img src="../imagenes/logo_paginapeliculas.png" alt="imagen3">
-            <a href="peliculas.html">Películas</a>
+            <a href="peliculas.php">Películas</a>
         </div>    
         <div class="menu">
             <img src="../imagenes/logo_paginavideojuegos.png" alt="imagen4">
-            <a href="videojuegos.html">Videojuegos</a>
+            <a href="videojuegos.php">Videojuegos</a>
         </div>    
         <div class="menu">
             <img src="../imagenes/logo_paginacontactos.png" alt="imagen5">
-            <a href="../contactos.html">Contactos</a>
+            <a href="../contactos.php">Contactos</a>
         </div>                
     </nav>
 
